@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{templates.html}"
+>
+<head>
+    <title>People List</title>
+    <link rel="stylesheet" href="../static/css/listPag.css" th:href="@{/css/listPag.css}">
+</head>
+<body>
+<h1>Lista Pessoas</h1>
+
+    <div layout:fragment="content">
+<table>
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Cpf</th>
+        <th>Gender</th>
+        <th>Functions</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="people : ${list}">
+            <td th:text="${people.email}"></td>
+            <td th:text="${people.name}"></td>
+            <td th:text="${people.age}"></td>
+            <td th:text="${people.cpf}"></td>
+            <td th:text="${people.gender}"></td>
+            <td>
+
+                <a th:href="@{/mysite/register?id={id}(id=${people.id})}">Update</a>
+                <form action="/mysite/list" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="id" th:value="${people.id}">
+                    <input class="function-button" type="submit" value="delete">
+                </form>
+
+            </td>
+        </tr>
+
+
+    </tbody>
+
+
+</table>
+
+</div>
+</body>
+
+</html>

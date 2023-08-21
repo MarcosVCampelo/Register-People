@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{templates.html}">
+<head>
+    <link rel="stylesheet" href="../static/css/register.css" th:href="@{/css/register.css}">
+    <title>Regsiter</title>
+</head>
+<body>
+    <div layout:fragment="content">
+
+
+    <form method="post" action="/mysite/list">
+
+        <input type="hidden" name="_method" value="put" th:if="${people != null}">
+        <input type="hidden" name="id" th:value="${people?.id}">
+
+
+        <h1>Register</h1>
+
+
+        <label for="email">Email: </label>
+        <input id="email" name="email" required th:value="${people?.email}">
+        <br>
+        <label for="name">Name: </label>
+        <input id="name" name="name" required th:value="${people?.name}">
+        <br>
+        <label for="age">Age: </label>
+        <input id="age" name="age" required th:value="${people?.age}">
+        <br>
+        <label for="cpf">Cpf: </label>
+        <input id="cpf" name="cpf" required th:value="${people?.cpf}">
+        <br>
+        <label for="gender">Gender: </label>
+        <input id="gender" name="gender" required th:value="${people?.gender}">
+        <br>
+
+        <button type="submit">Register</button>
+
+
+    </form>
+    </div>
+</body>
+</html>
